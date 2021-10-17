@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI", "PatientLabTestAPI\PatientLabTestAPI.csproj", "{5198224E-57FB-40CC-B6B0-0CF960F87805}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Models", "PatientLabTestAPI.Models\PatientLabTestAPI.Models.csproj", "{3DE7D5FC-BDF4-4CA9-BD69-AA8AAD5EE205}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.DataContext", "PatientLabTestAPI.DataContext\PatientLabTestAPI.DataContext.csproj", "{D7D1EECB-D1E2-422F-9927-C00E64A8A673}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Register", "PatientLabTestAPI.Register\PatientLabTestAPI.Register.csproj", "{C0AD9D73-0781-4D74-8A97-5AD3CC637887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Repository", "PatientLabTestAPI.Repository\PatientLabTestAPI.Repository.csproj", "{71D0C20D-55E8-4755-BD6A-ECC736BA328C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Services", "PatientLabTestAPI.Services\PatientLabTestAPI.Services.csproj", "{2D1E7275-7407-4248-9ACC-8940FCC0AA33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5198224E-57FB-40CC-B6B0-0CF960F87805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5198224E-57FB-40CC-B6B0-0CF960F87805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5198224E-57FB-40CC-B6B0-0CF960F87805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5198224E-57FB-40CC-B6B0-0CF960F87805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DE7D5FC-BDF4-4CA9-BD69-AA8AAD5EE205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE7D5FC-BDF4-4CA9-BD69-AA8AAD5EE205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE7D5FC-BDF4-4CA9-BD69-AA8AAD5EE205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE7D5FC-BDF4-4CA9-BD69-AA8AAD5EE205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D1EECB-D1E2-422F-9927-C00E64A8A673}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D1EECB-D1E2-422F-9927-C00E64A8A673}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D1EECB-D1E2-422F-9927-C00E64A8A673}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D1EECB-D1E2-422F-9927-C00E64A8A673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0AD9D73-0781-4D74-8A97-5AD3CC637887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0AD9D73-0781-4D74-8A97-5AD3CC637887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0AD9D73-0781-4D74-8A97-5AD3CC637887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0AD9D73-0781-4D74-8A97-5AD3CC637887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D0C20D-55E8-4755-BD6A-ECC736BA328C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D0C20D-55E8-4755-BD6A-ECC736BA328C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D0C20D-55E8-4755-BD6A-ECC736BA328C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D0C20D-55E8-4755-BD6A-ECC736BA328C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2879AB96-4FCA-4EBA-934A-C67DDF77126A}
+	EndGlobalSection
+EndGlobal
