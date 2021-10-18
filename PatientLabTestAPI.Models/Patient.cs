@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientLabTestAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,5 +28,7 @@ namespace PatientLabTestAPI.Models
         public virtual PatientContact PatientPrimaryContact { get; set; }
         public virtual PatientContact PatientEmergencyContact { get; set; }
         public virtual ICollection<PatientLabResults> PatientLabResults { get; set; }
+        [NotMapped]
+        public Message Message { get; set; }
     }
 }

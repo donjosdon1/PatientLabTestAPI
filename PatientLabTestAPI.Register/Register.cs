@@ -13,6 +13,10 @@ namespace PatientLabTestAPI.Register
             services.AddDbContext<PatientLabTestDbContext>();
             services.AddScoped<ILabTestCategoryRepo, LabTestCategoryRepo>();
             services.AddScoped<ILabTestCategoryService, LabTestCategoryService>();
+            services.AddScoped<ILabTestSubCategoryRepo, LabTestSubCategoryRepo>();
+            services.AddScoped<ILabTestSubCategoryService, LabTestSubCategoryService>();
+            services.AddScoped<ILabResultRepo, LabResultRepo>();
+            services.AddScoped(typeof(IRepoCommon<>), typeof(RepoCommon<>));
         }
     }
 }

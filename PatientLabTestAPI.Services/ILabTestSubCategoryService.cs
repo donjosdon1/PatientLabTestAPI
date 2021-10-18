@@ -2,7 +2,7 @@
 
 namespace PatientLabTestAPI.Services
 {
-    public interface ILabTestCategoryService : IServiceBase<LabTestCategory>
+    public interface ILabTestSubCategoryService : IServiceBase<LabTestSubCategory>
     {
 
     }

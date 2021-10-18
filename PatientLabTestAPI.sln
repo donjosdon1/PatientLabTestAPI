@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.DataConte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Register", "PatientLabTestAPI.Register\PatientLabTestAPI.Register.csproj", "{C0AD9D73-0781-4D74-8A97-5AD3CC637887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Repository", "PatientLabTestAPI.Repository\PatientLabTestAPI.Repository.csproj", "{71D0C20D-55E8-4755-BD6A-ECC736BA328C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Repository", "PatientLabTestAPI.Repository\PatientLabTestAPI.Repository.csproj", "{71D0C20D-55E8-4755-BD6A-ECC736BA328C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Services", "PatientLabTestAPI.Services\PatientLabTestAPI.Services.csproj", "{2D1E7275-7407-4248-9ACC-8940FCC0AA33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Services", "PatientLabTestAPI.Services\PatientLabTestAPI.Services.csproj", "{2D1E7275-7407-4248-9ACC-8940FCC0AA33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabResults.Common", "PatientLabResults.Common\PatientLabResults.Common.csproj", "{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D1E7275-7407-4248-9ACC-8940FCC0AA33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

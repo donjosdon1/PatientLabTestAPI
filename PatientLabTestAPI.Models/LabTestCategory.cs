@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientLabTestAPI.Common;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace PatientLabTestAPI.Models
@@ -16,5 +17,7 @@ namespace PatientLabTestAPI.Models
         public string Description { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
+        [NotMapped]
+        public Message Message { get; set; }
     }
 }

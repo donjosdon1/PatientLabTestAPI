@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatientLabTestAPI.Common;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace PatientLabTestAPI.Models
@@ -9,7 +10,7 @@ namespace PatientLabTestAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ResultID { get; set; }
         [Required]
-        [ForeignKey("LabTestSubCategory")]
+        [ForeignKey(nameof(LabTestSubCategory))]
         public long SubCategoryID { get; set; }        
         [Required]
         [MaxLength(100)]
@@ -25,5 +26,7 @@ namespace PatientLabTestAPI.Models
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
         public virtual LabTestSubCategory LabTestSubCategory { get; set; }
+        [NotMapped]
+        public Message Message { get; set; }
     }
 }

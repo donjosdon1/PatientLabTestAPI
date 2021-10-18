@@ -2,7 +2,7 @@
 
 namespace PatientLabTestAPI.Repository
 {
-    public interface ILabTestCategoryRepo : IBaseRepo<LabTestCategory>
+    public interface ILabTestSubCategoryRepo : IBaseRepo<LabTestSubCategory>
     {
     }
 }

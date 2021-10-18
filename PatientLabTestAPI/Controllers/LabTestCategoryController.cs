@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PatientLabTestAPI.Common;
 using PatientLabTestAPI.Models;
 using PatientLabTestAPI.Services;
 using System;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/category/")]
     [ApiController]
-    public class LabTestCategoryController : ControllerBase//, IApiBase<LabTestCategory, long>
+    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategory>
     {
         private readonly ILabTestCategoryService service;
         private readonly ILogger<LabTestCategoryController> logger;
@@ -21,7 +22,7 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpPost]
-        [Route("createcategory")]
+        [Route("create")]
         public async Task<LabTestCategory> CreateRecord([FromBody] LabTestCategory record)
         {
             try
@@ -32,31 +33,76 @@ namespace PatientLabTestAPI.Controllers
                 }
                 return record;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError(ex.Message);
                 throw;
             }
         }
 
-        //public Task Delete(long key)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpPost]
+        [Route("update")]
+        public async Task<LabTestCategory> UpdateRecord([FromBody] LabTestCategory record)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await service.UpdateRecord(record);
+                }
+                return record;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+                throw;
+            }
+        }
 
-        //public Task<IEnumerable<LabTestCategory>> GetAllData()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpPost]
+        [Route("delete")]
+        public async Task<Message> Delete(long key)
+        {
+            try
+            {
+                return await service.Delete(key);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+                return new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage };
+            }
+        }
 
-        //public Task<LabTestCategory> GetDataByKey(long key)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpGet]
+        [Route("getall")]
+        public async Task<IEnumerable<LabTestCategory>> GetAllData()
+        {
+            try
+            {
+                return await service.GetAllData();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+                throw;
+            }
+        }
 
-        //public Task<IEnumerable<LabTestCategory>> GetFilteredData(DateTime startDate, DateTime endDate)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpGet]
+        [Route("getcategory")]
+        public async Task<LabTestCategory> GetDataByKey(long key)
+        {
+            try
+            {
+                return await service.GetDataByKey(key);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+                throw;
+            }
+        }
     }
+
 }
