@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Repositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Services", "PatientLabTestAPI.Services\PatientLabTestAPI.Services.csproj", "{2D1E7275-7407-4248-9ACC-8940FCC0AA33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Common", "PatientLabResults.Common\PatientLabTestAPI.Common.csproj", "{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Common", "PatientLabTestAPI.Common\PatientLabTestAPI.Common.csproj", "{9D027BD9-57A9-4BCA-8449-34E52F71B9B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
