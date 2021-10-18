@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PatientLabResults.Common\PatientLabResults.Common.csproj" />
+    <ProjectReference Include="..\PatientLabResults.Common\PatientLabTestAPI.Common.csproj" />
   </ItemGroup>
 
 </Project>

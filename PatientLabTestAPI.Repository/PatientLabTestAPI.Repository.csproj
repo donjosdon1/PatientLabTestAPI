@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PatientLabResults.Common\PatientLabResults.Common.csproj" />
+    <ProjectReference Include="..\PatientLabResults.Common\PatientLabTestAPI.Common.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.DataContext\PatientLabTestAPI.DataContext.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Models\PatientLabTestAPI.Models.csproj" />
   </ItemGroup>
