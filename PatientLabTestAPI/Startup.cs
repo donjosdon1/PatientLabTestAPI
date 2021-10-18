@@ -26,7 +26,7 @@ namespace PatientLabTestAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientLabTestAPI", Version = "v1" });
             });
-            Register.Register.RegisterAll(services);
+            Register.RegisterInstances.RegisterAll(services);
 
         }
 

@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
-    [Route("api/labtestcategory")]
+    [Route("api/labsubcategory/")]
     [ApiController]
-    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategory>
+    public class LabTestSubCategoryController : ControllerBase, IApiBase<LabTestSubCategory>
     {
-        private readonly ILabTestCategoryService service;
-        private readonly ILogger<LabTestCategoryController> logger;
-        public LabTestCategoryController(ILabTestCategoryService labTestCategoryService, ILogger<LabTestCategoryController> loggerCategory)
+        private readonly ILabTestSubCategoryService service;
+        private readonly ILogger<LabTestSubCategoryController> logger;
+        public LabTestSubCategoryController(ILabTestSubCategoryService labTestSubCategoryService, ILogger<LabTestSubCategoryController> loggerCategory)
         {
-            service = labTestCategoryService;
+            service = labTestSubCategoryService;
             logger = loggerCategory;
         }
 
         [HttpPost]
-        public async Task<LabTestCategory> CreateRecord([FromBody] LabTestCategory record)
+        public async Task<LabTestSubCategory> CreateRecord([FromBody] LabTestSubCategory record)
         {
             try
             {
@@ -40,12 +40,12 @@ namespace PatientLabTestAPI.Controllers
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new LabTestSubCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
         [HttpPut]
-        public async Task<LabTestCategory> UpdateRecord([FromBody] LabTestCategory record)
+        public async Task<LabTestSubCategory> UpdateRecord([FromBody] LabTestSubCategory record)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace PatientLabTestAPI.Controllers
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new LabTestSubCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
@@ -80,8 +80,8 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
-        [HttpGet]        
-        public async Task<IEnumerable<LabTestCategory>> GetAllData()
+        [HttpGet]
+        public async Task<IEnumerable<LabTestSubCategory>> GetAllData()
         {
             try
             {
@@ -94,8 +94,8 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
-        [HttpGet("{key}")]        
-        public async Task<LabTestCategory> GetDataByKey(long key)
+        [HttpGet("{key}")]
+        public async Task<LabTestSubCategory> GetDataByKey(long key)
         {
             try
             {

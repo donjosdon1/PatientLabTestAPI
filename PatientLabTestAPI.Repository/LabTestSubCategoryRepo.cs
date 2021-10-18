@@ -24,8 +24,17 @@ namespace PatientLabTestAPI.Repository
         }
         public async Task<LabTestSubCategory> CreateRecord(LabTestSubCategory record)
         {
-            await patientLabTestDbContext.LabTestSubCategories.AddAsync(record);
-            await patientLabTestDbContext.SaveChangesAsync();
+            try
+            {
+                await patientLabTestDbContext.LabTestSubCategories.AddAsync(record);
+                await patientLabTestDbContext.SaveChangesAsync();
+                record.Message = new Message { MessageCode = Constants.RecordCreatedCode, MessageDescription = Constants.RecordCreatedMessage };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message ?? string.Empty);
+                record.Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage };
+            }
             return record;
         }
 
@@ -43,9 +52,21 @@ namespace PatientLabTestAPI.Repository
         }
 
         public async Task<IEnumerable<LabTestSubCategory>> GetAllData() =>
-             await patientLabTestDbContext.LabTestSubCategories.OrderBy(x => x.SubCategoryName).ToListAsync();
+             await patientLabTestDbContext.LabTestSubCategories.Include(x => x.LabTestCategory).OrderBy(x => x.SubCategoryName).ToListAsync();
 
-        public async Task<LabTestSubCategory> GetDataByKey(long key) => await patientLabTestDbContext.LabTestSubCategories.FindAsync(key);
-                
+        public async Task<LabTestSubCategory> GetDataByKey(long key)
+        {
+            var data = await patientLabTestDbContext.LabTestSubCategories.Include(x => x.LabTestCategory).FirstOrDefaultAsync(x=>x.SubCategoryID == key);
+            if (data == null)
+            {
+                return new LabTestSubCategory { Message = new Message { MessageCode = Constants.RecordnotfoundErrorCode, MessageDescription = Constants.RecordnotfoundErrorMessage } };
+            }
+            else
+            {
+                data.Message = new Message { MessageCode = Constants.RecordfoundCode, MessageDescription = Constants.RecordfoundMessage };
+                return data;
+            }
+        }
+
     }
 }
