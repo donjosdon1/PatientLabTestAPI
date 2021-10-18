@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PatientLabTestAPI.Common
 {
-    public class Constants
+    public static class Constants
     {
         public const string RecordnotfoundErrorCode = "400";
         public const string RecordnotfoundErrorMessage = "Record not found";
