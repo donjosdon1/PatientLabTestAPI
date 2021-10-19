@@ -12,22 +12,22 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
-    [Route("api/labresult")]
+    [Route("api/patient")]
     [ApiController]
-    public class LabResultController : ControllerBase, IApiBase<LabResultRequestDto, LabResult>
+    public class PatientController : ControllerBase, IApiBase<PatientRequestDto, Patient>
     {
-        private readonly ILabResultService service;
-        private readonly ILogger<LabResultController> logger;
-        public readonly IObjectMapper<LabResultRequestDto, LabResult> objectMapper;
-        public LabResultController(ILabResultService labResultService, ILogger<LabResultController> loggerResult, IObjectMapper<LabResultRequestDto, LabResult> objectMapper)
+        private readonly IPatientService service;
+        private readonly ILogger<PatientController> logger;
+        public readonly IObjectMapper<PatientRequestDto, Patient> objectMapper;
+        public PatientController(IPatientService patientService, ILogger<PatientController> loggerResult, IObjectMapper<PatientRequestDto, Patient> objectMapper)
         {
-            service = labResultService;
+            service = patientService;
             logger = loggerResult;
             this.objectMapper = objectMapper;
         }
 
         [HttpPost]
-        public async Task<LabResult> CreateRecord([FromBody] LabResultRequestDto record)
+        public async Task<Patient> CreateRecord([FromBody] PatientRequestDto record)
         {
             try
             {
@@ -37,18 +37,18 @@ namespace PatientLabTestAPI.Controllers
                 }
                 else
                 {
-                    return new LabResult { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabResult { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
         [HttpPut]
-        public async Task<LabResult> UpdateRecord([FromBody] LabResultRequestDto record)
+        public async Task<Patient> UpdateRecord([FromBody] PatientRequestDto record)
         {
             try
             {
@@ -58,13 +58,13 @@ namespace PatientLabTestAPI.Controllers
                 }
                 else
                 {
-                    return new LabResult { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabResult { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
@@ -83,7 +83,7 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<LabResult>> GetAllData()
+        public async Task<IEnumerable<Patient>> GetAllData()
         {
             try
             {
@@ -97,7 +97,7 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet("{key}")]
-        public async Task<LabResult> GetDataByKey(long key)
+        public async Task<Patient> GetDataByKey(long key)
         {
             try
             {

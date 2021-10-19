@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PatientLabTestAPI.Dto\PatientLabTestAPI.Dto.csproj" />
+    <ProjectReference Include="..\PatientLabTestAPI.Mapper\PatientLabTestAPI.Mapper.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Register\PatientLabTestAPI.Register.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Services\PatientLabTestAPI.Services.csproj" />
   </ItemGroup>

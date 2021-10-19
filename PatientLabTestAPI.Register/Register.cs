@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PatientLabTestAPI.Mapper;
 using PatientLabTestAPI.Repository;
 using PatientLabTestAPI.Services;
 
@@ -23,6 +24,9 @@ namespace PatientLabTestAPI.Register
             services.AddScoped<ILabResultRepo, LabResultRepo>();
             services.AddScoped(typeof(IRepoCommon<>), typeof(RepoCommon<>));
             services.AddScoped<ILabResultService, LabResultService>();
+            services.AddScoped<IPatientRepo, PatientRepo>();
+            services.AddScoped<IPatientService, PatientService>();
+            services.AddScoped(typeof(IObjectMapper<,>), typeof(ObjectMapper<,>));
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PatientLabTestAPI.Common;
+using PatientLabTestAPI.Dto;
+using PatientLabTestAPI.Mapper;
 using PatientLabTestAPI.Models;
 using PatientLabTestAPI.Services;
 using System;
@@ -12,30 +14,33 @@ namespace PatientLabTestAPI.Controllers
 {
     [Route("api/labtestcategory")]
     [ApiController]
-    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategory>
+    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategoryRequestDto, LabTestCategory>
     {
         private readonly ILabTestCategoryService service;
         private readonly ILogger<LabTestCategoryController> logger;
-        public LabTestCategoryController(ILabTestCategoryService labTestCategoryService, ILogger<LabTestCategoryController> loggerCategory)
+        public readonly IObjectMapper<LabTestCategoryRequestDto, LabTestCategory> objectMapper;
+        public LabTestCategoryController(ILabTestCategoryService labTestCategoryService, ILogger<LabTestCategoryController> loggerCategory,
+             IObjectMapper<LabTestCategoryRequestDto, LabTestCategory> objectMapper)
         {
             service = labTestCategoryService;
             logger = loggerCategory;
+            this.objectMapper = objectMapper;
         }
 
         [HttpPost]
-        public async Task<LabTestCategory> CreateRecord([FromBody] LabTestCategory record)
+        public async Task<LabTestCategory> CreateRecord([FromBody] LabTestCategoryRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await service.CreateRecord(record);
+
+                    return await service.CreateRecord(objectMapper.MapObject(record));
                 }
                 else
                 {
-                    record.Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty };
+                    return new LabTestCategory {Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
-                return record;
             }
             catch (Exception ex)
             {
@@ -45,19 +50,18 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<LabTestCategory> UpdateRecord([FromBody] LabTestCategory record)
+        public async Task<LabTestCategory> UpdateRecord([FromBody] LabTestCategoryRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await service.UpdateRecord(record);
+                    return await service.UpdateRecord(objectMapper.MapObject(record));
                 }
                 else
                 {
-                    record.Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty };
+                    return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
-                return record;
             }
             catch (Exception ex)
             {
