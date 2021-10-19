@@ -14,12 +14,12 @@ namespace PatientLabTestAPI.Controllers
 {
     [Route("api/patient")]
     [ApiController]
-    public class PatientController : ControllerBase, IApiBase<PatientRequestDto, Patient>
+    public class PatientController : ControllerBase, IApiBase<PatientRequestDto, PatientResponseDto>
     {
         private readonly IPatientService service;
         private readonly ILogger<PatientController> logger;
-        public readonly IObjectMapper<PatientRequestDto, Patient> objectMapper;
-        public PatientController(IPatientService patientService, ILogger<PatientController> loggerResult, IObjectMapper<PatientRequestDto, Patient> objectMapper)
+        public readonly IObjectMapper objectMapper;
+        public PatientController(IPatientService patientService, ILogger<PatientController> loggerResult, IObjectMapper objectMapper)
         {
             service = patientService;
             logger = loggerResult;
@@ -27,44 +27,46 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<Patient> CreateRecord([FromBody] PatientRequestDto record)
+        public async Task<PatientResponseDto> CreateRecord([FromBody] PatientRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return await service.CreateRecord(objectMapper.MapObject(record));
+                    var data = await service.CreateRecord(objectMapper.MapObject<PatientRequestDto, Patient>(record));
+                    return objectMapper.MapObject<Patient, PatientResponseDto>(data);
                 }
                 else
                 {
-                    return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new PatientResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new PatientResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
         [HttpPut]
-        public async Task<Patient> UpdateRecord([FromBody] PatientRequestDto record)
+        public async Task<PatientResponseDto> UpdateRecord([FromBody] PatientRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return await service.UpdateRecord(objectMapper.MapObject(record));
+                    var data = await service.UpdateRecord(objectMapper.MapObject<PatientRequestDto, Patient>(record));
+                    return objectMapper.MapObject<Patient, PatientResponseDto>(data);
                 }
                 else
                 {
-                    return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new PatientResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new Patient { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new PatientResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
@@ -83,11 +85,11 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Patient>> GetAllData()
+        public async Task<IEnumerable<PatientResponseDto>> GetAllData()
         {
             try
             {
-                return await service.GetAllData();
+                return objectMapper.MapList<Patient, PatientResponseDto>(await service.GetAllData());
             }
             catch (Exception ex)
             {
@@ -97,11 +99,11 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet("{key}")]
-        public async Task<Patient> GetDataByKey(long key)
+        public async Task<PatientResponseDto> GetDataByKey(long key)
         {
             try
             {
-                return await service.GetDataByKey(key);
+                return objectMapper.MapObject<Patient, PatientResponseDto>(await service.GetDataByKey(key));
             }
             catch (Exception ex)
             {

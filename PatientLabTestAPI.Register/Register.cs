@@ -26,7 +26,9 @@ namespace PatientLabTestAPI.Register
             services.AddScoped<ILabResultService, LabResultService>();
             services.AddScoped<IPatientRepo, PatientRepo>();
             services.AddScoped<IPatientService, PatientService>();
-            services.AddScoped(typeof(IObjectMapper<,>), typeof(ObjectMapper<,>));
+            services.AddScoped(typeof(IObjectMapper), typeof(ObjectMapper));
+            services.AddScoped<IPatientLabResultsRepo, PatientLabResultsRepo>();
+            services.AddScoped<IPatientLabResultsService, PatientLabResultsService>();
         }
     }
 }

@@ -19,6 +19,13 @@ namespace PatientLabTestAPI.Models
         public string LastName { get; set; }
         [Required]
         public DateTime DOB { get; set; }
+        public string StreetAddress { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
         [Required]
         public int Gender { get; set; }    
         [MaxLength(100)]
@@ -29,7 +36,6 @@ namespace PatientLabTestAPI.Models
         public string EmergencyEmail { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
-        public virtual PatientContact PatientPrimaryContact { get; set; }
         public virtual ICollection<PatientLabResults> PatientLabResults { get; set; }
         [NotMapped]
         public Message Message { get; set; }

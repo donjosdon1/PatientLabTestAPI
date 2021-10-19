@@ -16,8 +16,8 @@ namespace PatientLabTestAPI.Services
 
         public async Task<Message> Delete(long key)=>await categoryRepo.Delete(key);
 
-        public Task<IEnumerable<LabTestSubCategory>> GetAllData() => categoryRepo.GetAllData();
+        public async Task<IEnumerable<LabTestSubCategory>> GetAllData() => await categoryRepo.GetAllData();
 
-        public Task<LabTestSubCategory> GetDataByKey(long key) => categoryRepo.GetDataByKey(key);        
+        public async Task<LabTestSubCategory> GetDataByKey(long key) => await categoryRepo.GetDataByKey(key);        
     }
 }

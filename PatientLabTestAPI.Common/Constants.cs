@@ -9,7 +9,7 @@ namespace PatientLabTestAPI.Common
         public const string RecordnotfoundErrorCode = "400";
         public const string RecordnotfoundErrorMessage = "Record not found";
         public const string GenericErrorcode = "500";
-        public const string GenericErrorMessage = "Somethig went wrong. Please try again.";
+        public const string GenericErrorMessage = "Something went wrong. Please try again.";
         public const string RecordCreatedCode = "100";
         public const string RecordCreatedMessage = "Record has been created";
         public const string RecordUpdatedCode = "200";

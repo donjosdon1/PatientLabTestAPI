@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PatientLabTestAPI.Common\PatientLabTestAPI.Common.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.DataContext\PatientLabTestAPI.DataContext.csproj" />
+    <ProjectReference Include="..\PatientLabTestAPI.Dto\PatientLabTestAPI.Dto.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Models\PatientLabTestAPI.Models.csproj" />
   </ItemGroup>
 

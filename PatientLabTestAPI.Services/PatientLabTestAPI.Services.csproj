@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PatientLabTestAPI.Dto\PatientLabTestAPI.Dto.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Models\PatientLabTestAPI.Models.csproj" />
     <ProjectReference Include="..\PatientLabTestAPI.Repository\PatientLabTestAPI.Repository.csproj" />
   </ItemGroup>

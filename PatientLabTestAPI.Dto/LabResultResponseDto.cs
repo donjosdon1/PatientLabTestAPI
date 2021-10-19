@@ -4,7 +4,7 @@ using System;
 
 namespace PatientLabTestAPI.Dto
 {
-    public class LabRequestResponseDto
+    public class LabResultResponseDto
     {
         public long ResultID { get; set; }
         public long SubCategoryID { get; set; }
@@ -15,7 +15,7 @@ namespace PatientLabTestAPI.Dto
         public string ResultDescription { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
-        public virtual LabTestSubCategory LabTestSubCategory { get; set; }        
+        public LabTestSubCategory LabTestSubCategory { get; set; }        
         public Message Message { get; set; }
     }
 }

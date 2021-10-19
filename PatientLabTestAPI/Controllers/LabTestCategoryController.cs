@@ -14,13 +14,13 @@ namespace PatientLabTestAPI.Controllers
 {
     [Route("api/labtestcategory")]
     [ApiController]
-    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategoryRequestDto, LabTestCategory>
+    public class LabTestCategoryController : ControllerBase, IApiBase<LabTestCategoryRequestDto, LabTestCategoryResponseDto>
     {
         private readonly ILabTestCategoryService service;
         private readonly ILogger<LabTestCategoryController> logger;
-        public readonly IObjectMapper<LabTestCategoryRequestDto, LabTestCategory> objectMapper;
+        public readonly IObjectMapper objectMapper;
         public LabTestCategoryController(ILabTestCategoryService labTestCategoryService, ILogger<LabTestCategoryController> loggerCategory,
-             IObjectMapper<LabTestCategoryRequestDto, LabTestCategory> objectMapper)
+             IObjectMapper objectMapper)
         {
             service = labTestCategoryService;
             logger = loggerCategory;
@@ -28,45 +28,46 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<LabTestCategory> CreateRecord([FromBody] LabTestCategoryRequestDto record)
+        public async Task<LabTestCategoryResponseDto> CreateRecord([FromBody] LabTestCategoryRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-
-                    return await service.CreateRecord(objectMapper.MapObject(record));
+                    var data = await service.CreateRecord(objectMapper.MapObject<LabTestCategoryRequestDto, LabTestCategory>(record));
+                    return objectMapper.MapObject<LabTestCategory, LabTestCategoryResponseDto>(data);
                 }
                 else
                 {
-                    return new LabTestCategory {Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new LabTestCategoryResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new LabTestCategoryResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
         [HttpPut]
-        public async Task<LabTestCategory> UpdateRecord([FromBody] LabTestCategoryRequestDto record)
+        public async Task<LabTestCategoryResponseDto> UpdateRecord([FromBody] LabTestCategoryRequestDto record)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return await service.UpdateRecord(objectMapper.MapObject(record));
+                    var data = await service.UpdateRecord(objectMapper.MapObject<LabTestCategoryRequestDto, LabTestCategory>(record));
+                    return objectMapper.MapObject<LabTestCategory, LabTestCategoryResponseDto>(data);
                 }
                 else
                 {
-                    return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
+                    return new LabTestCategoryResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = ModelState.Values.Any() ? string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) : string.Empty } };
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex.Message);
-                return new LabTestCategory { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
+                return new LabTestCategoryResponseDto { Message = new Message { MessageCode = Constants.GenericErrorcode, MessageDescription = Constants.GenericErrorMessage } };
             }
         }
 
@@ -85,11 +86,11 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet]        
-        public async Task<IEnumerable<LabTestCategory>> GetAllData()
+        public async Task<IEnumerable<LabTestCategoryResponseDto>> GetAllData()
         {
             try
             {
-                return await service.GetAllData();
+                return objectMapper.MapList<LabTestCategory, LabTestCategoryResponseDto>(await service.GetAllData());
             }
             catch (Exception ex)
             {
@@ -99,11 +100,11 @@ namespace PatientLabTestAPI.Controllers
         }
 
         [HttpGet("{key}")]        
-        public async Task<LabTestCategory> GetDataByKey(long key)
+        public async Task<LabTestCategoryResponseDto> GetDataByKey(long key)
         {
             try
             {
-                return await service.GetDataByKey(key);
+                return objectMapper.MapObject<LabTestCategory, LabTestCategoryResponseDto>(await service.GetDataByKey(key));
             }
             catch (Exception ex)
             {
