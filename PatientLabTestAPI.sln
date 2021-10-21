@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Dto", "Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Mapper", "PatientLabTestAPI.Mapper\PatientLabTestAPI.Mapper.csproj", "{04BB0648-78F0-48A9-930B-046C01B167E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.UnitTesting", "PatientLabTestAPI.UnitTesting\PatientLabTestAPI.UnitTesting.csproj", "{8E1104BB-361A-4724-ACC4-23D80088756B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Jwt", "PatientLabTestAPI.Jwt\PatientLabTestAPI.Jwt.csproj", "{628799D7-01FC-482D-B7C3-DDDA8BD99046}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabResultAPI.Cache", "PatientLabResultAPI.Cache\PatientLabResultAPI.Cache.csproj", "{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}"
@@ -69,10 +67,6 @@ Global
 		{04BB0648-78F0-48A9-930B-046C01B167E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04BB0648-78F0-48A9-930B-046C01B167E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04BB0648-78F0-48A9-930B-046C01B167E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E1104BB-361A-4724-ACC4-23D80088756B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E1104BB-361A-4724-ACC4-23D80088756B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E1104BB-361A-4724-ACC4-23D80088756B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E1104BB-361A-4724-ACC4-23D80088756B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{628799D7-01FC-482D-B7C3-DDDA8BD99046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{628799D7-01FC-482D-B7C3-DDDA8BD99046}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{628799D7-01FC-482D-B7C3-DDDA8BD99046}.Release|Any CPU.ActiveCfg = Release|Any CPU
