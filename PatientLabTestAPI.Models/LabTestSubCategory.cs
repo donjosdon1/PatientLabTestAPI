@@ -1,10 +1,9 @@
 ﻿using PatientLabTestAPI.Common;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace PatientLabTestAPI.Models
 {
-    public class LabTestSubCategory
+    public class LabTestSubCategory : ModelBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,8 +17,6 @@ namespace PatientLabTestAPI.Models
         [MaxLength(1000)]
         public string Description { get; set; }
         public decimal Cost { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
         public virtual LabTestCategory LabTestCategory { get; set; }
         [NotMapped]
         public Message Message { get; set; }

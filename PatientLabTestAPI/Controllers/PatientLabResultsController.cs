@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PatientLabTestAPI.Common;
 using PatientLabTestAPI.Dto;
@@ -12,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
+    [EnableCors]
+    [Authorize]
     [Route("api/patientlabreport")]
     [ApiController]
     public class PatientLabResultsController : ControllerBase, IApiBase<PatientLabResultsRequestDto, PatientLabResultsResponseDto>
@@ -33,8 +37,9 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.CreateRecord(objectMapper.MapObject<PatientLabResultsRequestDto, PatientLabResults>(record));
-                    return objectMapper.MapObject<PatientLabResults, PatientLabResultsResponseDto>(data);
+                    var data = objectMapper.MapObject<PatientLabResultsRequestDto, PatientLabResults>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<PatientLabResults, PatientLabResultsResponseDto>(await service.CreateRecord(data));
                 }
                 else
                 {
@@ -55,8 +60,9 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.UpdateRecord(objectMapper.MapObject<PatientLabResultsRequestDto, PatientLabResults>(record));
-                    return objectMapper.MapObject<PatientLabResults, PatientLabResultsResponseDto>(data);
+                    var data = objectMapper.MapObject<PatientLabResultsRequestDto, PatientLabResults>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<PatientLabResults, PatientLabResultsResponseDto>(await service.UpdateRecord(data));
                 }
                 else
                 {

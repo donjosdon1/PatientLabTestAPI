@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PatientLabTestAPI.Common;
 using PatientLabTestAPI.Dto;
@@ -12,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
+    [EnableCors]
+    [Authorize]
     [Route("api/labsubcategory/")]
     [ApiController]
     public class LabTestSubCategoryController : ControllerBase, IApiBase<LabTestSubCategoryRequestDto, LabTestSubCategoryResponseDto>
@@ -34,8 +38,9 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.CreateRecord(objectMapper.MapObject<LabTestSubCategoryRequestDto, LabTestSubCategory>(record));
-                    return objectMapper.MapObject<LabTestSubCategory, LabTestSubCategoryResponseDto>(data);
+                    var data = objectMapper.MapObject<LabTestSubCategoryRequestDto, LabTestSubCategory>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<LabTestSubCategory, LabTestSubCategoryResponseDto>(await service.CreateRecord(data));
                 }
                 else
                 {
@@ -56,8 +61,9 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.UpdateRecord(objectMapper.MapObject<LabTestSubCategoryRequestDto, LabTestSubCategory>(record));
-                    return objectMapper.MapObject<LabTestSubCategory, LabTestSubCategoryResponseDto>(data);
+                    var data = objectMapper.MapObject<LabTestSubCategoryRequestDto, LabTestSubCategory>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<LabTestSubCategory, LabTestSubCategoryResponseDto>(await service.UpdateRecord(data));
                 }
                 else
                 {

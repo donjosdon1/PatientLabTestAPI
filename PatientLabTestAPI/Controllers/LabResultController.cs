@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PatientLabTestAPI.Common;
 using PatientLabTestAPI.Dto;
@@ -12,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace PatientLabTestAPI.Controllers
 {
+    [EnableCors]
+    [Authorize]
     [Route("api/labresult")]
     [ApiController]
     public class LabResultController : ControllerBase, IApiBase<LabResultRequestDto, LabResultResponseDto>
@@ -33,8 +37,9 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.CreateRecord(objectMapper.MapObject<LabResultRequestDto, LabResult>(record));
-                    return objectMapper.MapObject<LabResult, LabResultResponseDto>(data);
+                    var data = objectMapper.MapObject<LabResultRequestDto, LabResult>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<LabResult, LabResultResponseDto>(await service.CreateRecord(data));
                 }
                 else
                 {
@@ -55,8 +60,10 @@ namespace PatientLabTestAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var data = await service.UpdateRecord(objectMapper.MapObject<LabResultRequestDto, LabResult>(record));
-                    return objectMapper.MapObject<LabResult, LabResultResponseDto>(data);
+                    var data = objectMapper.MapObject<LabResultRequestDto, LabResult>(record);
+                    data.LastUpdatedBy = User.Identity.Name;
+                    return objectMapper.MapObject<LabResult, LabResultResponseDto>(await service.UpdateRecord(data));
+
                 }
                 else
                 {

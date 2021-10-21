@@ -9,11 +9,12 @@ namespace PatientLabTestAPI.Repository
         {
             optionsBuilder.UseSqlite(@"DataSource=PatientLabTest.db");
         }
-        
+
         public DbSet<Patient> Patients { get; set; }
         public DbSet<LabTestCategory> LabTestCategories { get; set; }
         public DbSet<LabTestSubCategory> LabTestSubCategories { get; set; }
         public DbSet<LabResult> LabResults { get; set; }
         public DbSet<PatientLabResults> PatientLabResults { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

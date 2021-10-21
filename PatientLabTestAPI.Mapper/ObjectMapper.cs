@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PatientLabTestAPI.Mapper
 {
-    public class ObjectMapper : IObjectMapper//<TSource, TDestination> where TSource: class
+    public class ObjectMapper : IObjectMapper
     {
         public TDestination MapObject<TSource, TDestination>(TSource source)
         {

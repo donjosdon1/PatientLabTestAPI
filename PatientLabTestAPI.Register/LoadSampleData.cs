@@ -14,14 +14,19 @@ namespace PatientLabTestAPI.Register
         public static void LoadData(PatientLabTestDbContext patientLabTestDbContext)
         {
             //Add categories            
-            patientLabTestDbContext.LabTestCategories.AddRange(GetLabTestCategories());
-            patientLabTestDbContext.SaveChanges();
-            patientLabTestDbContext.LabTestSubCategories.AddRange(
+            patientLabTestDbContext.LabTestCategories.AddRangeAsync(GetLabTestCategories());
+            patientLabTestDbContext.SaveChangesAsync();
+            //Add sub categories   
+            patientLabTestDbContext.LabTestSubCategories.AddRangeAsync(
                 GetLabTestSubCategories(patientLabTestDbContext));
-            patientLabTestDbContext.SaveChanges();
-            patientLabTestDbContext.LabResults.AddRange(
+            patientLabTestDbContext.SaveChangesAsync();
+            //Add lab results   
+            patientLabTestDbContext.LabResults.AddRangeAsync(
                 GetLabResults(patientLabTestDbContext));
-            patientLabTestDbContext.SaveChanges();
+            patientLabTestDbContext.SaveChangesAsync();
+            //Add users   
+            patientLabTestDbContext.Users.Add(new User { UserName = "testuser1", Password = "test@12345", Role = "Admin" });
+            patientLabTestDbContext.SaveChangesAsync();
         }
 
         private static List<LabTestSubCategory> GetLabTestSubCategories(PatientLabTestDbContext patientLabTestDbContext)

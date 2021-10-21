@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PatientLabTestAPI.Models
 {
-    public class PatientLabResults
+    public class PatientLabResults : ModelBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,8 +30,6 @@ namespace PatientLabTestAPI.Models
         public int Result { get; set; }
         [MaxLength(1000)]
         public string Comments { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual LabResult LabResult { get; set; }
         [NotMapped]

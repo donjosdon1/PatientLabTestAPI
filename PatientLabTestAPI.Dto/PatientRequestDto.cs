@@ -29,7 +29,5 @@ namespace PatientLabTestAPI.Dto
         public string EmergencyPhone { get; set; }
         [MaxLength(50)]
         public string EmergencyEmail { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
     }
 }

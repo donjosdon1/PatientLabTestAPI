@@ -26,7 +26,5 @@ namespace PatientLabTestAPI.Dto
         public int Result { get; set; }
         [MaxLength(1000)]
         public string Comments { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
     }
 }

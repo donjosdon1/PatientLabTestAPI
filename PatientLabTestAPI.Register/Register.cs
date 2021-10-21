@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.DependencyInjection;
+using PatientLabResultAPI.Cache;
 using PatientLabTestAPI.Mapper;
 using PatientLabTestAPI.Repository;
 using PatientLabTestAPI.Services;
@@ -29,6 +31,10 @@ namespace PatientLabTestAPI.Register
             services.AddScoped(typeof(IObjectMapper), typeof(ObjectMapper));
             services.AddScoped<IPatientLabResultsRepo, PatientLabResultsRepo>();
             services.AddScoped<IPatientLabResultsService, PatientLabResultsService>();
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<IMemoryCache, MemoryCache>();
+            services.AddSingleton(typeof(ICache<>), typeof(Cache<>));
         }
     }
 }

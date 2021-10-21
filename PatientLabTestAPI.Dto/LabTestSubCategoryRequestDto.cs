@@ -14,7 +14,5 @@ namespace PatientLabTestAPI.Dto
         [MaxLength(1000)]
         public string Description { get; set; }
         public decimal Cost { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
     }
 }

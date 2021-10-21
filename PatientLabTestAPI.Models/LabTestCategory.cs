@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace PatientLabTestAPI.Models
 {
-    public class LabTestCategory
+    public class LabTestCategory : ModelBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,8 +15,6 @@ namespace PatientLabTestAPI.Models
         [Required]
         [MaxLength(1000)]
         public string Description { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
         [NotMapped]
         public Message Message { get; set; }
     }

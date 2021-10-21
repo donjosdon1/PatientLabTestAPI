@@ -19,7 +19,5 @@ namespace PatientLabTestAPI.Dto
         public string ResultUnit { get; set; }
         [Required]
         public string ResultDescription { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public string LastUpdatedBy { get; set; }
     }
 }
