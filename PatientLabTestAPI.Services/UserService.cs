@@ -26,7 +26,7 @@ namespace PatientLabTestAPI.Services
             {
                 var secret = configuration["Secret"];
                 var expiry = Convert.ToInt16(configuration["TokenExpiry"]);
-                return $"Bearer {JwtTokens.GetToken(secret, user.UserName.Trim(), user.Role.Trim(), expiry)}";
+                return JwtTokens.GetToken(secret, user.UserName.Trim(), user.Role.Trim(), expiry);
             }
             else
             {
