@@ -66,7 +66,7 @@ namespace PatientLabTestAPI
             }
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+            //app.UseCors();
             app.UseMiddleware<RequestMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();
