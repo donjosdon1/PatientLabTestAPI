@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PatientLabTestAPI.Middleware;
@@ -41,14 +40,14 @@ namespace PatientLabTestAPI
                     ValidateAudience = false
                 };
             });
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("GlobalPolicy", builder =>
-            //    {
-            //        builder.WithOrigins(Configuration["AllowedHosts"])
-            //        .AllowAnyMethod();
-            //    });
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("GlobalPolicy", builder =>
+                {
+                    builder.WithOrigins(Configuration["AllowedHosts"])
+                    .AllowAnyMethod();
+                });
+            });
             services.AddControllers();
             services.AddMemoryCache();
             SwaggerRegister(services);
@@ -58,15 +57,13 @@ namespace PatientLabTestAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PatientLabTestAPI v1"));
-            //}
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PatientLabTestAPI v1"));
+
             app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseCors();
+            app.UseCors();
             app.UseMiddleware<RequestMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();
