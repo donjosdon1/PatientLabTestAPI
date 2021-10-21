@@ -30,6 +30,12 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new PatientPabResult. The request dto object will be converted to the PatientLabResult data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">PatientLabResultsRequestDto</param>
+        /// <returns>PatientLabResultsResponseDto</returns>
         [HttpPost]
         public async Task<PatientLabResultsResponseDto> CreateRecord([FromBody] PatientLabResultsRequestDto record)
         {
@@ -53,6 +59,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to update PatientPabResult. The request dto object will be converted to the PatientLabResult data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">PatientLabResultsRequestDto</param>
+        /// <returns>PatientLabResultsResponseDto</returns>
         [HttpPut]
         public async Task<PatientLabResultsResponseDto> UpdateRecord([FromBody] PatientLabResultsRequestDto record)
         {
@@ -76,6 +88,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to delete Patient labresult
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>Message</returns>
         [HttpDelete("{key}")]
         public async Task<Message> Delete(long key)
         {
@@ -90,6 +107,10 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve all Patient labresult
+        /// </summary>
+        /// <returns>PatientLabResultsResponseDto</returns>
         [HttpGet]
         public async Task<IEnumerable<PatientLabResultsResponseDto>> GetAllData()
         {
@@ -104,6 +125,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to delete Patient labresult
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>PatientLabResultsResponseDto</returns>
         [HttpGet("{key}")]
         public async Task<PatientLabResultsResponseDto> GetDataByKey(long key)
         {
@@ -118,6 +144,13 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to GetPatient that have had a certain type of lab reports
+        /// </summary>
+        /// <param name="resultID">long</param>
+        /// <param name="startDate">DateTime</param>
+        /// <param name="endDate">DateTime</param>
+        /// <returns>PatientLabResultsResponseDto</returns>
         [HttpGet]
         [Route("getreport")]
         public async Task<IEnumerable<PatientLabReportResponseDto>> GetPatientWithLabReport(long resultID, DateTime startDate, DateTime endDate)

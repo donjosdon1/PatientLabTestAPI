@@ -31,6 +31,12 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new Test Category. The request dto object will be converted to the LabTestCategory data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabTestCategoryRequestDto</param>
+        /// <returns>LabTestCategoryResponseDto</returns>
         [HttpPost]
         public async Task<LabTestCategoryResponseDto> CreateRecord([FromBody] LabTestCategoryRequestDto record)
         {
@@ -54,6 +60,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to update a new Test Category. The request dto object will be converted to the LabTestCategory data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabTestCategoryRequestDto</param>
+        /// <returns>LabTestCategoryResponseDto</returns>
         [HttpPut]
         public async Task<LabTestCategoryResponseDto> UpdateRecord([FromBody] LabTestCategoryRequestDto record)
         {
@@ -77,6 +89,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to delete a new Test Category based on id/key
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <returns>Message</returns>
         [HttpDelete("{key}")]
         public async Task<Message> Delete(long key)
         {
@@ -91,6 +108,10 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve all Test Categories.
+        /// </summary>
+        /// <returns>LabTestCategoryResponseDto</returns>
         [HttpGet]        
         public async Task<IEnumerable<LabTestCategoryResponseDto>> GetAllData()
         {
@@ -105,6 +126,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve Test Category based on id/key
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>LabTestCategoryResponseDto</returns>
         [HttpGet("{key}")]        
         public async Task<LabTestCategoryResponseDto> GetDataByKey(long key)
         {

@@ -65,7 +65,7 @@ namespace PatientLabTestAPI.Repository
         private async Task<IEnumerable<LabTestCategory>> GetData()
         {
             var data = cache.GetCache(nameof(LabTestCategory));
-            if (data != null)
+            if (data != null && data.Any())
             {
                 return data.OrderBy(x => x.CategoryName).ToList();
             }

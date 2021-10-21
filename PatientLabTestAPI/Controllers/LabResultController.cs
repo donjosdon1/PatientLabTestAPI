@@ -30,6 +30,12 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new LabResult. The request dto object will be converted to the LabResult data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabResultRequestDto</param>
+        /// <returns>LabResultResponseDto</returns>
         [HttpPost]
         public async Task<LabResultResponseDto> CreateRecord([FromBody] LabResultRequestDto record)
         {
@@ -53,6 +59,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to update a new LabResult. The request dto object will be converted to the LabResult data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabResultRequestDto</param>
+        /// <returns>LabResultResponseDto</returns>
         [HttpPut]
         public async Task<LabResultResponseDto> UpdateRecord([FromBody] LabResultRequestDto record)
         {
@@ -77,6 +89,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to delete a new LabResult based on the id/key. 
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>Message</returns>
         [HttpDelete("{key}")]
         public async Task<Message> Delete(long key)
         {
@@ -91,6 +108,10 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve all the data from DB
+        /// </summary>
+        /// <returns>LabResultResponseDto</returns>
         [HttpGet]
         public async Task<IEnumerable<LabResultResponseDto>> GetAllData()
         {
@@ -105,6 +126,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve data based on id/key
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>LabResultResponseDto</returns>
         [HttpGet("{key}")]
         public async Task<LabResultResponseDto> GetDataByKey(long key)
         {

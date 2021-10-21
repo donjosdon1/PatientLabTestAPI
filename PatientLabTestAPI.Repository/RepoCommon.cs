@@ -10,9 +10,9 @@ namespace PatientLabTestAPI.Repository
 {
     public class RepoCommon<T> : IRepoCommon<T> where T : class
     {
-        private readonly ILogger<LabResultRepo> logger;
+        private readonly ILogger<T> logger;
 
-        public RepoCommon(ILogger<LabResultRepo> logger)
+        public RepoCommon(ILogger<T> logger)
         {
             this.logger = logger;
         }

@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Dto", "Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Mapper", "PatientLabTestAPI.Mapper\PatientLabTestAPI.Mapper.csproj", "{04BB0648-78F0-48A9-930B-046C01B167E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.Jwt", "PatientLabTestAPI.Jwt\PatientLabTestAPI.Jwt.csproj", "{628799D7-01FC-482D-B7C3-DDDA8BD99046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.Jwt", "PatientLabTestAPI.Jwt\PatientLabTestAPI.Jwt.csproj", "{628799D7-01FC-482D-B7C3-DDDA8BD99046}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabResultAPI.Cache", "PatientLabResultAPI.Cache\PatientLabResultAPI.Cache.csproj", "{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabResultAPI.Cache", "PatientLabResultAPI.Cache\PatientLabResultAPI.Cache.csproj", "{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.UnitTest", "PatientLabTestAPI.UnitTest\PatientLabTestAPI.UnitTest.csproj", "{D3858446-231F-4749-92D8-2CABE1416116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E63E1A-EE7B-40C7-9325-B1E26940FF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3858446-231F-4749-92D8-2CABE1416116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3858446-231F-4749-92D8-2CABE1416116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3858446-231F-4749-92D8-2CABE1416116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3858446-231F-4749-92D8-2CABE1416116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

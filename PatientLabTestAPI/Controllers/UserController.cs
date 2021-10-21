@@ -27,6 +27,11 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new user with username and password
+        /// </summary>
+        /// <param name="record">UserRequestDto</param>
+        /// <returns>Message</returns>
         [HttpPost]
         public async Task<Message> CreateRecord([FromBody] UserRequestDto record)
         {
@@ -48,6 +53,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to validate the user with username and password. If valid, will generate the token.
+        /// This token need to be sent in the Authorization headers with the subsequent requests
+        /// </summary>
+        /// <param name="user">UserValidateRequest</param>
+        /// <returns>string</returns>
         [HttpPost]
         [Route("validateuser")]
         public async Task<string> ValidateUser(UserValidateRequest user) => await service.ValidateUser(objectMapper.MapObject< UserValidateRequest, User>(user));

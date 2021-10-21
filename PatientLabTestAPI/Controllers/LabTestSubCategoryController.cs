@@ -31,6 +31,12 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new SubTest Category. The request dto object will be converted to the LabSubTestCategory data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabSubTestCategoryRequestDto</param>
+        /// <returns>LabSubTestCategoryResponseDto</returns>
         [HttpPost]
         public async Task<LabTestSubCategoryResponseDto> CreateRecord([FromBody] LabTestSubCategoryRequestDto record)
         {
@@ -54,6 +60,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to update a new SubTest Category. The request dto object will be converted to the LabSubTestCategory data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">LabSubTestCategoryRequestDto</param>
+        /// <returns>LabSubTestCategoryResponseDto</returns>
         [HttpPut]
         public async Task<LabTestSubCategoryResponseDto> UpdateRecord([FromBody] LabTestSubCategoryRequestDto record)
         {
@@ -77,6 +89,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to Delete SubTest Category. 
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>Message</returns>
         [HttpDelete("{key}")]
         public async Task<Message> Delete(long key)
         {
@@ -91,6 +108,10 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve all SubTest Categories
+        /// </summary>
+        /// <returns>LabSubTestCategoryResponseDto</returns>
         [HttpGet]
         public async Task<IEnumerable<LabTestSubCategoryResponseDto>> GetAllData()
         {
@@ -105,6 +126,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve SubTest Category. 
+        /// </summary>
+        /// <param name="long">key</param>
+        /// <returns>LabSubTestCategoryResponseDto</returns>
         [HttpGet("{key}")]
         public async Task<LabTestSubCategoryResponseDto> GetDataByKey(long key)
         {

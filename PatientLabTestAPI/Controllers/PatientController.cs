@@ -30,6 +30,12 @@ namespace PatientLabTestAPI.Controllers
             this.objectMapper = objectMapper;
         }
 
+        /// <summary>
+        /// This method helps to create a new Patient. The request dto object will be converted to the Patient data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">PatientRequestDto</param>
+        /// <returns>PatientResponseDto</returns>
         [HttpPost]
         public async Task<PatientResponseDto> CreateRecord([FromBody] PatientRequestDto record)
         {
@@ -53,6 +59,12 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to update a new Patient. The request dto object will be converted to the Patient data model for saving to DB.
+        /// The LastUpdatedBy will be picked from the User object.
+        /// </summary>
+        /// <param name="record">PatientRequestDto</param>
+        /// <returns>PatientResponseDto</returns>
         [HttpPut]
         public async Task<PatientResponseDto> UpdateRecord([FromBody] PatientRequestDto record)
         {
@@ -76,6 +88,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to delete Patient. 
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>Message</returns>
         [HttpDelete("{key}")]
         public async Task<Message> Delete(long key)
         {
@@ -90,6 +107,10 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve all Patients
+        /// </summary>
+        /// <returns>PatientResponseDto</returns>
         [HttpGet]
         public async Task<IEnumerable<PatientResponseDto>> GetAllData()
         {
@@ -104,6 +125,11 @@ namespace PatientLabTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// This method helps to retrieve Patient by id/key
+        /// </summary>
+        /// <param name="key">long</param>
+        /// <returns>PatientResponseDto</returns>
         [HttpGet("{key}")]
         public async Task<PatientResponseDto> GetDataByKey(long key)
         {
