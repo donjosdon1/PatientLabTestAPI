@@ -41,14 +41,14 @@ namespace PatientLabTestAPI
                     ValidateAudience = false
                 };
             });
-            services.AddCors(options =>
-            {
-                options.AddPolicy("GlobalPolicy", builder =>
-                {
-                    builder.WithOrigins(Configuration["AllowedHosts"])
-                    .AllowAnyMethod();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("GlobalPolicy", builder =>
+            //    {
+            //        builder.WithOrigins(Configuration["AllowedHosts"])
+            //        .AllowAnyMethod();
+            //    });
+            //});
             services.AddControllers();
             services.AddMemoryCache();
             SwaggerRegister(services);
