@@ -17,12 +17,18 @@ namespace PatientLabTestAPI.UnitTest
         private readonly RepoCommon<LabTestCategory> repoCommon = new Mock<RepoCommon<LabTestCategory>>(new Mock<ILogger<LabTestCategory>>().Object).Object;
         private readonly ICache<IEnumerable<LabTestCategory>> cache = new Mock<ICache<IEnumerable<LabTestCategory>>>().Object;
 
-        [Fact]
-        public async Task CreateCategory()
+        [Theory]
+        [InlineData("Test001", "Test Desc1", "test")]
+        [InlineData("Test002", "Test Desc2", "test")]
+        [InlineData("Test003", "Test Desc3", "test")]
+        [InlineData("Test004", "Test Desc4", "test")]
+        [InlineData("Test005", "Test Desc5", "test")]
+        [InlineData("Test006", "Test Desc6", "test")]
+        public async Task CreateCategoryTest(string catName, string desc, string updatedBy)
         {
             var repo = new LabTestCategoryRepo(context, logger, repoCommon, cache);
             //create category
-            var labTestCategory = new LabTestCategory { CategoryName = "Test001", Description = "Test Desc", LastUpdatedBy = "Test user" };
+            var labTestCategory = new LabTestCategory { CategoryName = catName, Description = desc, LastUpdatedBy = updatedBy };
             await repo.CreateRecord(labTestCategory);
 
             //check the newly created on by fetching from the DB        
@@ -30,12 +36,18 @@ namespace PatientLabTestAPI.UnitTest
             Assert.True(dataByKey.CategoryID == labTestCategory.CategoryID && labTestCategory.CategoryName == dataByKey.CategoryName && dataByKey.Description == labTestCategory.Description);
         }
 
-        [Fact]
-        public async Task UpdateCategory()
+        [Theory]
+        [InlineData("Test001", "Test Desc1", "test")]
+        [InlineData("Test002", "Test Desc2", "test")]
+        [InlineData("Test003", "Test Desc3", "test")]
+        [InlineData("Test004", "Test Desc4", "test")]
+        [InlineData("Test005", "Test Desc5", "test")]
+        [InlineData("Test006", "Test Desc6", "test")]
+        public async Task UpdateCategoryTest(string catName, string desc, string updatedBy)
         {
             var repo = new LabTestCategoryRepo(context, logger, repoCommon, cache);
             //create category
-            var labTestCategory = new LabTestCategory { CategoryName = "Test002", Description = "Test Desc2", LastUpdatedBy = "Test user2" };
+            var labTestCategory = new LabTestCategory { CategoryName = catName, Description = desc, LastUpdatedBy = updatedBy };
             await repo.CreateRecord(labTestCategory);
             labTestCategory.CategoryName = "Updated Test";
             labTestCategory.Description = "Updaed Desc2";
@@ -45,12 +57,19 @@ namespace PatientLabTestAPI.UnitTest
             var dataByKey = await repo.GetDataByKey(labTestCategory.CategoryID);
             Assert.True(dataByKey.CategoryID == labTestCategory.CategoryID && labTestCategory.CategoryName == dataByKey.CategoryName && dataByKey.Description == labTestCategory.Description);
         }
-        [Fact]
-        public async Task DeleteCategory()
+
+        [Theory]
+        [InlineData("Test001", "Test Desc1", "test")]
+        [InlineData("Test002", "Test Desc2", "test")]
+        [InlineData("Test003", "Test Desc3", "test")]
+        [InlineData("Test004", "Test Desc4", "test")]
+        [InlineData("Test005", "Test Desc5", "test")]
+        [InlineData("Test006", "Test Desc6", "test")]
+        public async Task DeleteCategoryTest(string catName, string desc, string updatedBy)
         {
             var repo = new LabTestCategoryRepo(context, logger, repoCommon, cache);
             //create category
-            var labTestCategory = new LabTestCategory { CategoryName = "Test002", Description = "Test Desc2", LastUpdatedBy = "Test user2" };
+            var labTestCategory = new LabTestCategory { CategoryName = catName, Description = desc, LastUpdatedBy = updatedBy };
             await repo.CreateRecord(labTestCategory);
 
             await repo.Delete(labTestCategory.CategoryID);
@@ -59,12 +78,18 @@ namespace PatientLabTestAPI.UnitTest
             Assert.True(dataByKey.CategoryID==0);
         }
 
-        [Fact]
-        public async Task GetAllCategory()
+        [Theory]
+        [InlineData("Test001", "Test Desc1", "test")]
+        [InlineData("Test002", "Test Desc2", "test")]
+        [InlineData("Test003", "Test Desc3", "test")]
+        [InlineData("Test004", "Test Desc4", "test")]
+        [InlineData("Test005", "Test Desc5", "test")]
+        [InlineData("Test006", "Test Desc6", "test")]
+        public async Task GetAllCategoryTest(string catName, string desc, string updatedBy)
         {
             var repo = new LabTestCategoryRepo(context, logger, repoCommon, cache);
             //create category
-            var labTestCategory = new LabTestCategory { CategoryName = "Test002", Description = "Test Desc2", LastUpdatedBy = "Test user2" };
+            var labTestCategory = new LabTestCategory { CategoryName = catName, Description = desc, LastUpdatedBy = updatedBy };
             await repo.CreateRecord(labTestCategory);
             var data = await repo.GetAllData();
             Assert.True(data.Any());

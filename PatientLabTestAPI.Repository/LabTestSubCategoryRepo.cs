@@ -47,7 +47,7 @@ namespace PatientLabTestAPI.Repository
 
         public async Task<Message> Delete(long key)
         {
-            var record = await patientLabTestDbContext.LabTestSubCategories.FirstOrDefaultAsync(x => x.CategoryID == key);
+            var record = await patientLabTestDbContext.LabTestSubCategories.FirstOrDefaultAsync(x => x.SubCategoryID == key);
             return await repoCommon.Delete(patientLabTestDbContext, record);
         }
 

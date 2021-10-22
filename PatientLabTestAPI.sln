@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabResultAPI.Cache",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLabTestAPI.UnitTest", "PatientLabTestAPI.UnitTest\PatientLabTestAPI.UnitTest.csproj", "{D3858446-231F-4749-92D8-2CABE1416116}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientLabTestAPI.IntegrationTest", "PatientLabTestAPI.IntegrationTest\PatientLabTestAPI.IntegrationTest.csproj", "{2782E11F-7879-4C84-B548-248D42E2FCAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{D3858446-231F-4749-92D8-2CABE1416116}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3858446-231F-4749-92D8-2CABE1416116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3858446-231F-4749-92D8-2CABE1416116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2782E11F-7879-4C84-B548-248D42E2FCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2782E11F-7879-4C84-B548-248D42E2FCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2782E11F-7879-4C84-B548-248D42E2FCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2782E11F-7879-4C84-B548-248D42E2FCAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
