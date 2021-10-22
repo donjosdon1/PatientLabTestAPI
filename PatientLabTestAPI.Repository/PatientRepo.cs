@@ -47,13 +47,26 @@ namespace PatientLabTestAPI.Repository
         {
             var record = await patientLabTestDbContext.Patients.FirstOrDefaultAsync(x => x.PatientID == key);
             return await repoCommon.Delete(patientLabTestDbContext, record);
-            
+
         }
 
         public async Task<IEnumerable<Patient>> GetAllData() =>
              await patientLabTestDbContext.Patients.OrderBy(x => x.FirstName).ToListAsync();
 
-        public async Task<Patient> GetDataByKey(long key) => await patientLabTestDbContext.Patients.FindAsync(key);
-        
+        public async Task<Patient> GetDataByKey(long key)
+        {
+            var data = await patientLabTestDbContext.Patients.FindAsync(key);
+            data ??= new Patient();
+            if (data.PatientID > 0)
+            {
+                data.Message = new Message { MessageCode = Constants.RecordfoundCode, MessageDescription = Constants.RecordfoundMessage };
+            }
+            else
+            {
+                data.Message = new Message { MessageCode = Constants.RecordnotfoundErrorCode, MessageDescription = Constants.RecordnotfoundErrorMessage };
+            }
+            return data;
+        }
+
     }
 }
