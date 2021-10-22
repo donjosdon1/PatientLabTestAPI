@@ -39,14 +39,14 @@ namespace PatientLabTestAPI.Repository
 
         public async Task<PatientLabResults> UpdateRecord(PatientLabResults record)
         {
-            var data = await patientLabTestDbContext.PatientLabResults.FirstOrDefaultAsync(x => x.PatientID == record.PatientID);
+            var data = await patientLabTestDbContext.PatientLabResults.FirstOrDefaultAsync(x => x.PatientLabResultID == record.PatientLabResultID);
             record.Message = await repoCommon.Update(patientLabTestDbContext, record, data);
             return record;
         }
 
         public async Task<Message> Delete(long key)
         {
-            var record = await patientLabTestDbContext.PatientLabResults.FirstOrDefaultAsync(x => x.PatientID == key);
+            var record = await patientLabTestDbContext.PatientLabResults.FirstOrDefaultAsync(x => x.PatientLabResultID == key);
             return await repoCommon.Delete(patientLabTestDbContext, record);
 
         }
