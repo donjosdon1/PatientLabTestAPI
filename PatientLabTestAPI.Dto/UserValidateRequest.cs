@@ -5,7 +5,7 @@ namespace PatientLabTestAPI.Dto
     public class UserValidateRequest
     {        
         [Required]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string UserName { get; set; }
         [Required]
         [MaxLength(30)]

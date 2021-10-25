@@ -1,13 +1,11 @@
-﻿using PatientLabTestAPI.Common;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PatientLabTestAPI.Dto
 {
     public class UserRequestDto
     {        
         [Required]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string UserName { get; set; }
         [Required]
         [MaxLength(30)]

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using PatientLabTestAPI.Repository;
+﻿using PatientLabTestAPI.Repository;
 
 namespace PatientLabTestAPI.UnitTest
 {

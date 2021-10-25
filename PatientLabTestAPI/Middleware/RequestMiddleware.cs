@@ -22,7 +22,7 @@ namespace PatientLabTestAPI.Middleware
 
         public Task Invoke(HttpContext httpContext)
         {
-            logger.LogInformation($"Path: {httpContext.Request.Path} Method: {httpContext.Request.Path}");
+            logger.LogInformation($"Path: {httpContext.Request.Path} Method: {httpContext.Request.Method} Host {httpContext.Request.Host}");
             return _next(httpContext);
         }
     }    

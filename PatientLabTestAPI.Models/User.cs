@@ -9,7 +9,7 @@ namespace PatientLabTestAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         [Required]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string UserName { get; set; }
         [Required]
         [MaxLength(30)]
